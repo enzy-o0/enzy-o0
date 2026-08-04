@@ -1,6 +1,6 @@
 <div align="center">
 
-![header](https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,100:2563EB&height=210&section=header&text=enzy-o0&fontSize=58&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38&desc=Frontend%20Developer&descAlignY=58&descSize=18)
+![header](https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,100:2563EB&height=210&section=header&text=ENZY&fontSize=58&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38&desc=Frontend%20Developer%20%C2%B7%20React%20%26%20Next.js&descAlignY=58&descSize=18)
 
 ![Profile views](https://komarev.com/ghpvc/?username=enzy-o0&style=for-the-badge&color=2563EB&label=PROFILE+VIEWS)
 
