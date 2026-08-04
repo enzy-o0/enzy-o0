@@ -1,6 +1,6 @@
 <div align="center">
 
-![header](https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,100:2563EB&height=210&section=header&text=ENZY&fontSize=58&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38&desc=Frontend%20Developer%20%C2%B7%20React%20%26%20Next.js&descAlignY=58&descSize=18)
+![header](https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,100:2563EB&height=210&section=header&text=ENZY&fontSize=58&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38&desc=Frontend%20Developer%20%C2%B7%20React%20%C2%B7%20Next.js&descAlignY=58&descSize=18)
 
 ![Profile views](https://komarev.com/ghpvc/?username=enzy-o0&style=for-the-badge&color=2563EB&label=PROFILE+VIEWS)
 
@@ -53,14 +53,5 @@ I learn, experiment, and document my work through code, mainly in the React and 
 ![Vitest](https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
 
 </details>
-
-## GitHub
-
-<div align="center">
-
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=enzy-o0&show_icons=true&hide_border=true&theme=github_dark&rank_icon=github)
-![Top languages](https://github-readme-stats.vercel.app/api/top-langs/?username=enzy-o0&layout=compact&hide_border=true&theme=github_dark)
-
-</div>
 
 ![footer](https://capsule-render.vercel.app/api?type=waving&color=0:2563EB,100:0D1117&height=120&section=footer)
