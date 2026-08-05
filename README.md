@@ -11,7 +11,10 @@ React · Next.js 생태계에서 5년째 제품을 만들고 있습니다.
 
 <br clear="right" />
 
-### 🧑‍💻 A little more about me...
+<details>
+<summary><strong>🧑‍💻 A little more about me...</strong></summary>
+
+<br>
 
 ```typescript
 const enzy = {
@@ -54,6 +57,8 @@ const enzy = {
   funFact: "가장 좋은 프롬프트는 결국 잘 쓴 스펙 문서였다",
 };
 ```
+
+</details>
 
 ### 🛠 하드 스킬
 
