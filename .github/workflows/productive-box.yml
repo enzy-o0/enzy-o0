@@ -1,0 +1,35 @@
+name: Productive Box
+
+# 시간대별 커밋 분포를 gist 에 갱신합니다. 그 gist 를 프로필에 pin 하면
+# 스크롤 없이 보이는 위젯이 됩니다.
+#
+# 이 워크플로우를 포크한 저장소가 아니라 프로필 저장소에 둔 이유:
+#   포크는 푸시가 없으면 60일 뒤 GitHub 이 cron 을 자동으로 끕니다
+#   (state=disabled_inactivity). 실제로 이전 productive-box 포크가
+#   그렇게 멈춰서 gist 가 2024-02 이후 갱신되지 않았습니다.
+#   프로필 저장소는 waka-readme-stats 가 매일 커밋하므로 항상 활성 상태입니다.
+#
+# 주의: 원본 포크(techinpark/productive-box)는 런타임이 node12 라 더 이상
+#       실행되지 않습니다. 원조 저장소(maxam2017)의 node20 버전을 사용합니다.
+
+on:
+  schedule:
+    # 매일 19:00 UTC (= 04:00 KST) — waka-readme 와 30분 간격
+    - cron: "0 19 * * *"
+  workflow_dispatch:
+
+jobs:
+  update-gist:
+    name: Update productive-box gist
+    runs-on: ubuntu-latest
+    # TIMEZONE 변수가 이 워크플로우의 스위치입니다.
+    # GH_TOKEN / GIST_ID 시크릿을 먼저 등록한 뒤 마지막에 설정하세요.
+    # (job-level if 에서는 secrets 컨텍스트를 쓸 수 없어 vars 로 게이팅합니다)
+    if: ${{ vars.TIMEZONE != '' }}
+    steps:
+      - name: Update gist
+        uses: maxam2017/productive-box@v1.2.0
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIST_ID: ${{ secrets.GIST_ID }}
+          TIMEZONE: ${{ vars.TIMEZONE }}
