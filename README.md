@@ -9,8 +9,6 @@ React · Next.js 생태계에서 5년째 제품을 만들고 있습니다.
 나온 결과를 리뷰하는 시간**이 더 깁니다.
 그래서 제 저장소에는 기능 코드만큼이나 워크플로우와 자동화가 함께 쌓여 있습니다.
 
-![GitHub followers](https://img.shields.io/github/followers/enzy-o0?label=Follow&style=social)
-
 <br clear="right" />
 
 ### 🧑‍💻 A little more about me...
@@ -85,11 +83,12 @@ const enzy = {
 <div align="center">
 
 <!--
-  주의: 공용 github-readme-stats.vercel.app 인스턴스는 503(DEPLOYMENT_PAUSED) 상태라 사용하지 않습니다.
-  현재는 유지보수 포크(github-stats-extended)를 사용 중이며, 이 역시 공용 무료 인스턴스이므로
-  장기적으로는 아래 waka 섹션(텍스트 기반, 외부 의존 없음)으로 대체할 예정입니다.
+  주의 1: 공용 github-readme-stats.vercel.app 인스턴스는 503(DEPLOYMENT_PAUSED) 상태라 사용하지 않습니다.
+          현재는 유지보수 포크(github-stats-extended)를 사용 중이며, 이 역시 공용 무료 인스턴스이므로
+          장기적으로는 아래 waka 섹션(텍스트 기반, 외부 의존 없음)으로 대체할 예정입니다.
+  주의 2: Rank / Total Stars / 커밋 수를 노출하는 Stats 카드는 의도적으로 넣지 않았습니다.
+          언어 분포만 보여주는 Top languages 카드만 유지합니다.
 -->
-<img height="165" src="https://github-stats-extended.vercel.app/api?username=enzy-o0&show_icons=true&hide_border=true&theme=github_dark&rank_icon=github&hide_title=true" alt="GitHub stats" />
 <img height="165" src="https://github-stats-extended.vercel.app/api/top-langs/?username=enzy-o0&layout=compact&hide_border=true&theme=github_dark&langs_count=8" alt="Top languages" />
 
 </div>
