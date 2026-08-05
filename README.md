@@ -1,4 +1,4 @@
-## 안녕하세요, enzy입니다 👋
+## Hi there 👋
 
 <img align="right" width="230" src="https://skillicons.dev/icons?i=ts,react,nextjs,js,nodejs,vite,jest,vitest,graphql&perline=3" alt="tech stack" />
 
