@@ -9,9 +9,6 @@ React · Next.js 생태계에서 5년째 제품을 만들고 있습니다.
 나온 결과를 리뷰하는 시간**이 더 깁니다.
 그래서 제 저장소에는 기능 코드만큼이나 워크플로우와 자동화가 함께 쌓여 있습니다.
 
-<!-- TODO: 아래 두 링크의 # 를 실제 주소로 교체하세요 -->
-[![Blog](https://img.shields.io/badge/Blog-2563EB?style=flat-square&logo=googlechrome&logoColor=white)](#)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](#)
 ![GitHub followers](https://img.shields.io/github/followers/enzy-o0?label=Follow&style=social)
 
 <br clear="right" />
