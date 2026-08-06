@@ -57,7 +57,7 @@ def build(data: dict) -> tuple[str, str]:
     sessions = stats.get("ai_sessions", 0)
 
     if not ai_category or not sessions:
-        return "I'm napping 💤", (
+        return "I'm still an egg 🥚", (
             "이번 주에는 기록된 AI 코딩 활동이 없어요.\n"
             "\n"
             "WakaTime 플러그인이 설치되어 있고 활동이\n"
