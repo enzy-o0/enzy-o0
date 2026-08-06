@@ -92,20 +92,3 @@ const enzy = {
 - 🧪 테스트 코드로 AI 산출물을 검증하는 습관 만들기 (Jest / Vitest)
 
 <br clear="right" />
-
----
-
-<!--
-  아래 마커 사이는 waka-readme-stats GitHub Action이 매일 "텍스트"로 갱신합니다.
-  외부 이미지 서비스에 의존하지 않으므로 깨지지 않습니다.
-  WAKA_ENABLED 변수가 true 로 설정되면 자동으로 채워지기 시작합니다.
--->
-<!--START_SECTION:waka-->
-🤖 **AI Coding This Week** 
-
-```text
-No AI Coding Activity Tracked This Week
-```
-
-
-<!--END_SECTION:waka-->

@@ -1,0 +1,47 @@
+name: AI Box
+
+# 이번 주 AI 코딩 지표를 pin 된 gist 에 갱신합니다.
+# WakaTime 주간 통계 한 번 호출로 끝나므로 외부 액션 의존이 없습니다.
+
+on:
+  schedule:
+    # 매일 19:30 UTC (= 04:30 KST) — 다른 워크플로우와 30분 간격
+    - cron: "30 19 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-gist:
+    name: Update AI coding gist
+    runs-on: ubuntu-latest
+    if: ${{ vars.WAKA_ENABLED == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update gist
+        env:
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          AI_GIST_ID: ${{ secrets.AI_GIST_ID }}
+          # 렌더링 결과를 저장소에도 남깁니다. 기록 목적도 있지만,
+          # 매일 커밋이 발생해야 GitHub 이 60일 무활동으로 cron 을
+          # 자동 비활성화(disabled_inactivity)하는 것을 막을 수 있습니다.
+          # 이전에 productive-box 포크가 그렇게 멈춘 적이 있습니다.
+          OUT_FILE: metrics/ai-coding.txt
+        run: |
+          mkdir -p metrics
+          python3 scripts/ai_box.py
+
+      - name: Commit rendered snapshot
+        run: |
+          if [[ -z "$(git status --porcelain metrics/)" ]]; then
+            echo "변경 없음"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add metrics/
+          git commit -m "chore: update AI coding snapshot"
+          git push
