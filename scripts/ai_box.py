@@ -57,7 +57,7 @@ def build(data: dict) -> tuple[str, str]:
     sessions = stats.get("ai_sessions", 0)
 
     if not ai_category or not sessions:
-        return "I'm still an egg 🥚", (
+        return "Cold start ❄️", (
             "이번 주에는 기록된 AI 코딩 활동이 없어요.\n"
             "\n"
             "WakaTime 플러그인이 설치되어 있고 활동이\n"
@@ -77,27 +77,35 @@ def build(data: dict) -> tuple[str, str]:
     total_changed = ai_added + ai_deleted + human_added + human_deleted
     by_hand = ((human_added + human_deleted) / total_changed * 100) if total_changed else 0
 
-    lines = [
-        row("AI time", ai_category.get("text", "-"), float(ai_category.get("percent", 0))),
-        row("AI written", f"{ai_added:,} lines", ai_written),
-        row("By hand", f"{human_added + human_deleted:,} lines", by_hand),
-    ]
+    # 어떤 모델을 얼마나 쓰는지가 이 박스의 본론이므로 맨 위에 둡니다.
+    models = sorted(stats.get("ai_model_breakdown", []), key=lambda m: m.get("lines", 0), reverse=True)
+    model_total = sum(m.get("lines", 0) for m in models)
 
-    top_model = max(stats.get("ai_model_breakdown", []), key=lambda m: m.get("lines", 0), default=None)
-    summary = f"{prompts:,} prompts · {sessions} sessions"
-    lines.append(f"\n{top_model['name']} · {summary}" if top_model else f"\n{summary}")
+    lines = []
+    for model in models[:4]:
+        share = (model.get("lines", 0) / model_total * 100) if model_total else 0
+        lines.append(row(model.get("name", "?"), f"{model.get('lines', 0):,} lines", share))
 
+    if not lines:
+        lines.append(row("AI written", f"{ai_added:,} lines", ai_written))
+        lines.append(row("By hand", f"{human_added + human_deleted:,} lines", by_hand))
+
+    # 총 사용량 요약.
+    summary = [f"\n{ai_category.get('text', '-')} · {ai_written:.1f}% AI-written"]
+    tail = f"{prompts:,} prompts · {sessions} sessions"
     if cost:
-        lines.append(f"Est. cost ${cost:,.2f}")
+        tail += f" · est. ${cost:,.2f}"
+    summary.append(tail)
+    lines.extend(summary)
 
-    # Mirrors productive-box's "I'm a night 🦉" title convention so both pinned
-    # gists read as one set.
+    # 제목은 AI 어휘로 통일합니다. 옆 pin 의 productive-box 가 동물 표현
+    # ("I'm a night 🦉")을 쓰고 있어, 같은 문법을 따르면 따라한 것처럼 읽힙니다.
     if ai_written >= 66:
-        title = "I'm a copilot 🦜"
+        title = "Agent-driven 🤖"
     elif ai_written >= 33:
-        title = "I'm a duo 🐬"
+        title = "Pair programming 🤝"
     else:
-        title = "I'm a crafter 🦫"
+        title = "Manual mode 🎛️"
 
     return title, "\n".join(lines)
 
