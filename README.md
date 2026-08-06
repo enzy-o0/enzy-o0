@@ -79,24 +79,21 @@ const enzy = {
 
 ### 🔭 요즘 하는 일
 
+<!--
+  주의 1: 공용 github-readme-stats.vercel.app 인스턴스는 503(DEPLOYMENT_PAUSED) 상태라 사용하지 않습니다.
+          현재는 유지보수 포크(github-stats-extended)를 사용 중이며, 이 역시 공용 무료 인스턴스입니다.
+  주의 2: Rank / Total Stars / 커밋 수를 노출하는 Stats 카드는 의도적으로 넣지 않았습니다.
+          언어 분포만 보여주는 Top languages 카드만 유지합니다.
+-->
+<img align="right" height="165" src="https://github-stats-extended.vercel.app/api/top-langs/?username=enzy-o0&layout=compact&hide_border=true&theme=github_dark&langs_count=6" alt="Most used languages" />
+
 - 🔁 PR에 Codex 리뷰를 자동 요청하고, CodeRabbit 피드백을 반영하는 CI 파이프라인 운영
 - 🧭 아이디어 → 요구사항 인터뷰 → PRD/ADR → 세로 슬라이스 이슈로 이어지는 기능 기획 워크플로우 설계
 - 🧪 테스트 코드로 AI 산출물을 검증하는 습관 만들기 (Jest / Vitest)
 
+<br clear="right" />
+
 ---
-
-<div align="center">
-
-<!--
-  주의 1: 공용 github-readme-stats.vercel.app 인스턴스는 503(DEPLOYMENT_PAUSED) 상태라 사용하지 않습니다.
-          현재는 유지보수 포크(github-stats-extended)를 사용 중이며, 이 역시 공용 무료 인스턴스이므로
-          장기적으로는 아래 waka 섹션(텍스트 기반, 외부 의존 없음)으로 대체할 예정입니다.
-  주의 2: Rank / Total Stars / 커밋 수를 노출하는 Stats 카드는 의도적으로 넣지 않았습니다.
-          언어 분포만 보여주는 Top languages 카드만 유지합니다.
--->
-<img height="165" src="https://github-stats-extended.vercel.app/api/top-langs/?username=enzy-o0&layout=compact&hide_border=true&theme=github_dark&langs_count=8" alt="Top languages" />
-
-</div>
 
 <!--
   아래 마커 사이는 waka-readme-stats GitHub Action이 매일 "텍스트"로 갱신합니다.
