@@ -177,9 +177,14 @@ def update_gist(gist_id: str, token: str, filename: str, content: str) -> None:
     existing = get_json(GIST_API + gist_id, headers)
     old_name = next(iter(existing.get("files", {})), filename)
 
+    # 파일명과 설명을 함께 갱신합니다. pin 카드는 설명이 있으면 그것을 제목으로
+    # 쓰기 때문에, 파일명만 바꾸면 생성 당시의 설명이 계속 노출됩니다.
+    #
     # Passing `filename` under the old key renames the file in place, so the
     # gist keeps a single file instead of accumulating one per title change.
-    payload = json.dumps({"files": {old_name: {"filename": filename, "content": content}}}).encode()
+    payload = json.dumps(
+        {"description": filename, "files": {old_name: {"filename": filename, "content": content}}}
+    ).encode()
     request = urllib.request.Request(GIST_API + gist_id, data=payload, headers=headers, method="PATCH")
     with urllib.request.urlopen(request, timeout=30) as response:
         response.read()
