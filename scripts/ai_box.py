@@ -29,9 +29,9 @@ GIST_API = "https://api.github.com/gists/"
 BAR_WIDTH = 18
 FILLED, EMPTY = "█", "░"
 
-# 라벨 이모지는 모두 단일 코드포인트만 씁니다. 변이선택자가 붙은 이모지(예: U+270D U+FE0F)는
-# len() 이 2로 세어져 고정폭 패딩이 한 칸씩 밀립니다.
-LABEL_AI_TIME, LABEL_AI_LINES, LABEL_HUMAN = "🤖 AI time", "📝 AI written", "🙋 By hand"
+# 본문에는 이모지를 쓰지 않습니다. 라벨만으로 의미가 충분하고, 좁은 pin 카드에서
+# 폭을 아낄 수 있으며, 이모지마다 표시 폭이 달라 고정폭 정렬이 깨지는 문제도 없앨 수 있습니다.
+# 귀여움은 제목 한 줄이 담당합니다.
 
 
 def get_json(url: str, headers: dict | None = None) -> dict:
@@ -46,7 +46,7 @@ def bar(percent: float) -> str:
 
 
 def row(label: str, value: str, percent: float) -> str:
-    return f"{label:<14}{value:<14}{bar(percent)} {percent:5.1f}%"
+    return f"{label:<12}{value:<14}{bar(percent)} {percent:5.1f}%"
 
 
 def build(data: dict) -> tuple[str, str]:
@@ -57,7 +57,7 @@ def build(data: dict) -> tuple[str, str]:
     sessions = stats.get("ai_sessions", 0)
 
     if not ai_category or not sessions:
-        return "🤖 No AI coding tracked this week", (
+        return "I'm napping 💤", (
             "이번 주에는 기록된 AI 코딩 활동이 없어요.\n"
             "\n"
             "WakaTime 플러그인이 설치되어 있고 활동이\n"
@@ -78,27 +78,26 @@ def build(data: dict) -> tuple[str, str]:
     by_hand = ((human_added + human_deleted) / total_changed * 100) if total_changed else 0
 
     lines = [
-        row(LABEL_AI_TIME, ai_category.get("text", "-"), float(ai_category.get("percent", 0))),
-        row(LABEL_AI_LINES, f"{ai_added:,} lines", ai_written),
-        row(LABEL_HUMAN, f"{human_added + human_deleted:,} lines", by_hand),
+        row("AI time", ai_category.get("text", "-"), float(ai_category.get("percent", 0))),
+        row("AI written", f"{ai_added:,} lines", ai_written),
+        row("By hand", f"{human_added + human_deleted:,} lines", by_hand),
     ]
 
     top_model = max(stats.get("ai_model_breakdown", []), key=lambda m: m.get("lines", 0), default=None)
-    if top_model:
-        lines.append(f"\n🧠 {top_model['name']} · {prompts:,} prompts · {sessions} sessions")
-    else:
-        lines.append(f"\n🧠 {prompts:,} prompts · {sessions} sessions")
+    summary = f"{prompts:,} prompts · {sessions} sessions"
+    lines.append(f"\n{top_model['name']} · {summary}" if top_model else f"\n{summary}")
 
     if cost:
-        lines.append(f"💵 Est. cost ${cost:,.2f}")
+        lines.append(f"Est. cost ${cost:,.2f}")
 
-    # Mirrors productive-box's "I'm a night 🦉" title convention.
+    # Mirrors productive-box's "I'm a night 🦉" title convention so both pinned
+    # gists read as one set.
     if ai_written >= 66:
-        title = f"🤖 I'm AI-driven ({ai_written:.0f}% AI-written)"
+        title = "I'm a copilot 🦜"
     elif ai_written >= 33:
-        title = f"⚖️ I'm balanced ({ai_written:.0f}% AI-written)"
+        title = "I'm a duo 🐬"
     else:
-        title = f"✋ I'm hands-on ({ai_written:.0f}% AI-written)"
+        title = "I'm a crafter 🦫"
 
     return title, "\n".join(lines)
 
